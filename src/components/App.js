@@ -1,5 +1,6 @@
 import React, {useReducer} from 'react';
 import { changeOperation } from '../actions';
+import {clearDisplay } from '../actions';
 
 
 import './App.css';
@@ -19,6 +20,9 @@ const handleNumClick = (number) => {
 }
 const handleSymbol = (symbol) => {
  dispatch(changeOperation(symbol));
+}
+const handleClear = (clear) => {
+  dispatch(clearDisplay(clear))
 }
  
   return (
@@ -75,7 +79,7 @@ const handleSymbol = (symbol) => {
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"} />
+              <CalcButton value={"CE"} onClick={() => handleClear("CE")} />
             </div>
           </form>
         </div>
