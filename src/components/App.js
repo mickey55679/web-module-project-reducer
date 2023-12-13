@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import { changeOperation } from '../actions';
+import { changeOperation, change_memory } from '../actions';
 import {clearDisplay } from '../actions';
 
 
@@ -23,6 +23,10 @@ const handleSymbol = (symbol) => {
 }
 const handleClear = (clear) => {
   dispatch(clearDisplay(clear))
+}
+const handleMemoryChange = () => {
+  console.log('M+ button pressed');
+  dispatch(change_memory())
 }
  
   return (
@@ -49,8 +53,8 @@ const handleClear = (clear) => {
             </div>
 
             <div className="row">
-              <CalcButton value={"M+"} />
-              <CalcButton value={"MR"} />
+              <CalcButton value={"M+"} onClick={() => handleMemoryChange()} />
+              <CalcButton value={"MR"} onClick={() => handleNumClick(state.memory)} />
               <CalcButton value={"MC"} />
             </div>
 
